@@ -2,6 +2,9 @@
 # Use the key "qwert"
 # Ignore the first 512 octets, encrypt the message "This class is cool."
 
+from pydoc import plain
+
+
 class RC4():
 
     # key-scheduling algoirthm (KSA): initalize for encrypt/decrypt
@@ -32,28 +35,42 @@ class RC4():
 
 # parameters: a plaintext string 
 # returns: ciphertext as an integer array
-def encrypt(key, plaintext):
+def encrypt(key, plaintext, file):
+    file.write(f"Encryption key: {key}\n\tPlaintext input: {plaintext}\n")
     rc4 = RC4(key)
-    cipher = []
+    int_array = []
     for char in plaintext:
-        cipher.append(ord(char) ^ rc4.step())
-    return cipher
+        int_array.append(ord(char) ^ rc4.step())
+    file.write(f"\tEncrypted int array: {list(map(hex, int_array))}\n")
+
+    # int array -> ciphertext string
+    ciphertext = "".join(list(map(chr, int_array)))
+    file.write(f"\tEncrypted output: {ciphertext}\n\n")
+    return ciphertext
 
 # parameters: ciphertext as an integer array
 # returns: a plaintext string
-def decrypt(key, ciphertext):
+def decrypt(key, ciphertext, file):
+    file.write(f"Decryption key: {key}\n\tCiphertext input: {ciphertext}\n")
     rc4 = RC4(key)
-    plain = []
-    for i in ciphertext:
-        plain.append(i ^ rc4.step())
-    return "".join(chr(i) for i in plain)
+    int_array = []
+    for char in ciphertext:
+        int_array.append(ord(char) ^ rc4.step())
+    file.write(f"\tDecrypted int array: {list(map(hex, int_array))}\n")
+    plaintext = "".join(list(map(chr, int_array)))
+    file.write(f"\tDecrypted output: {plaintext}\n\n")
+    return plaintext
 
 def main():
-    cipher = encrypt("qwer", "This class is cool.")
-    print(cipher) # decimal int array
-    print(list(map(hex, cipher))) # lower hex string array
-    plaintext = decrypt("qwer", cipher)
-    print(plaintext)
+    key = "qwer"
+    plaintext = "This class is cool."
+    with open("4a_output.txt", "w", encoding="utf-8") as f:
+        encrypted_text = encrypt(key, plaintext, f)
+        decrypted_text = decrypt(key, encrypted_text, f)
+        if decrypted_text == plaintext:
+            f.write("Decryption indeed reverses the encryption!\n")
+        else:
+            f.write("Decryption does not reverse the encryption!\n")
 
 if __name__ == "__main__":
     main()

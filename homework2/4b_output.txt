@@ -1,0 +1,51 @@
+Encryption password: cs6490hw
+	Plaintext input: INeedAnA
+	Convert to an int array: ['0x49', '0x4e', '0x65', '0x65', '0x64', '0x41', '0x6e', '0x41']
+	XOR: ['0x2a', '0x3d', '0x53', '0x51', '0x5d', '0x71', '0x6', '0x36']
+	Substitution: ['0xb8', '0xf9', '0x11', '0x35', '0x29', '0x7', '0x22', '0x75']
+	Convert to a 64-bit integer: 0xb8f9113529072275
+	Permutation round 1: 0x71f2226a520e44eb
+	Permutation round 2: 0xe3e444d4a41c89d6
+	Permutation round 3: 0xc7c889a9483913ad
+	Permutation round 4: 0x8f9113529072275b
+	Permutation round 5: 0x1f2226a520e44eb7
+	Permutation round 6: 0x3e444d4a41c89d6e
+	Permutation round 7: 0x7c889a9483913adc
+	Permutation round 8: 0xf9113529072275b8
+	Permutation round 9: 0xf2226a520e44eb71
+	Permutation round 10: 0xe444d4a41c89d6e3
+	Permutation round 11: 0xc889a9483913adc7
+	Permutation round 12: 0x9113529072275b8f
+	Permutation round 13: 0x2226a520e44eb71f
+	Permutation round 14: 0x444d4a41c89d6e3e
+	Permutation round 15: 0x889a9483913adc7c
+	Permutation round 16: 0x113529072275b8f9
+	Convert back to an int array: ['0x11', '0x35', '0x29', '0x7', '0x22', '0x75', '0xb8', '0xf9']
+	Ciphertext output: 5)"u¸ù
+
+Decryption password: cs6490hw
+	Ciphertext input: 5)"u¸ù
+	Convert to an int array: ['0x11', '0x35', '0x29', '0x7', '0x22', '0x75', '0xb8', '0xf9']
+	Convert to a 64-bit integer: 0x113529072275b8f9
+	Permutation round 1: 0x889a9483913adc7c
+	Permutation round 2: 0x444d4a41c89d6e3e
+	Permutation round 3: 0x2226a520e44eb71f
+	Permutation round 4: 0x9113529072275b8f
+	Permutation round 5: 0xc889a9483913adc7
+	Permutation round 6: 0xe444d4a41c89d6e3
+	Permutation round 7: 0xf2226a520e44eb71
+	Permutation round 8: 0xf9113529072275b8
+	Permutation round 9: 0x7c889a9483913adc
+	Permutation round 10: 0x3e444d4a41c89d6e
+	Permutation round 11: 0x1f2226a520e44eb7
+	Permutation round 12: 0x8f9113529072275b
+	Permutation round 13: 0xc7c889a9483913ad
+	Permutation round 14: 0xe3e444d4a41c89d6
+	Permutation round 15: 0x71f2226a520e44eb
+	Permutation round 16: 0xb8f9113529072275
+	Convert back to an int array: ['0xb8', '0xf9', '0x11', '0x35', '0x29', '0x7', '0x22', '0x75']
+	Substitution: ['0x2a', '0x3d', '0x53', '0x51', '0x5d', '0x71', '0x6', '0x36']
+	XOR: ['0x49', '0x4e', '0x65', '0x65', '0x64', '0x41', '0x6e', '0x41']
+	Plaintext output: INeedAnA
+
+Decryption indeed reverses the encryption!
