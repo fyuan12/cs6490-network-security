@@ -4,12 +4,10 @@ import random
 class CipherProgram():
     sub_tables = []
 
-    # generate 8 unique random substitution tables
-    # one for each char of the array
     def __init__(self):
         
+        # generate 8 unique random substitution tables and their inverses
         for i in range(8):
-            # generate 8 unique random substitution tables and their inverses
             sub_table = [i for i in range(256)]
             random.shuffle(sub_table)
             inverse_table = [0] * 256
@@ -25,7 +23,7 @@ class CipherProgram():
             int_64bit = int_64bit | arr[i]
         return int_64bit
 
-    # 64-bit int -> int/char array
+    # 64-bit int -> int array
     def _64BitIntToIntArray(self, n):
         arr = []
         for _ in range(8):
@@ -34,9 +32,6 @@ class CipherProgram():
         arr.reverse()
         return arr
 
-    # take an array of 8 char as input
-    # output an array of 8 encrypted chars
-    # key: 8 char password
     def encrypt(self, password, plaintext, file):
         file.write(f"Encryption password: {password}\n\tPlaintext input: {plaintext}\n")
 
