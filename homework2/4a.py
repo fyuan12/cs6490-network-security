@@ -30,7 +30,6 @@ class RC4():
         self.state[self.x], self.state[self.y] = self.state[self.y], self.state[self.x]
         return self.state[(self.state[self.x] + self.state[self.y]) % 256]
 
-
 def encrypt(key, plaintext, file):
     file.write(f"Encryption key: {key}\n\tPlaintext input: {plaintext}\n")
     rc4 = RC4(key)
@@ -44,7 +43,6 @@ def encrypt(key, plaintext, file):
     file.write(f"\tEncrypted output: {ciphertext}\n\n")
     return ciphertext
 
-
 def decrypt(key, ciphertext, file):
     file.write(f"Decryption key: {key}\n\tCiphertext input: {ciphertext}\n")
     rc4 = RC4(key)
@@ -55,7 +53,6 @@ def decrypt(key, ciphertext, file):
     plaintext = "".join(list(map(chr, int_array)))
     file.write(f"\tDecrypted output: {plaintext}\n\n")
     return plaintext
-
 
 def main():
     key = "qwer"
