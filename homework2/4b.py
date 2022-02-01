@@ -37,26 +37,28 @@ class CipherProgram():
 
         # plaintext string -> int array
         int_array = list(map(ord, plaintext))
-        output.write(f"\tConvert to an int array: {list(map(hex, int_array))}\n")
+        output.write(f"\tConvert input to an int array: {list(map(hex, int_array))}\n")
 
-        # step 1. xor with password
-        for i in range(8):
-            int_array[i] = int_array[i] ^ ord(password[i])
-        output.write(f"\tXOR: {list(map(hex, int_array))}\n")
-        
-        # step 2. character-by-character substitution
-        for i in range(8):
-            int_array[i] = self.sub_tables[i][0][int_array[i]]
-        output.write(f"\tSubstitution: {list(map(hex, int_array))}\n")
-
-        # step 3. permutation: 16 rounds of circular left shift
-        int_64bit = self._intArrayTo64BitInt(int_array)
-        output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
+        # a total of 16 encryption rounds
         for i in range(16):
+            output.write(f"\tEncryption Round No. {i+1}/16\n")
+            # step 1. xor with password
+            for j in range(8):
+                int_array[j] = int_array[j] ^ ord(password[j])
+            output.write(f"\t\tXOR: {list(map(hex, int_array))}\n")
+            
+            # step 2. character-by-character substitution
+            for j in range(8):
+                int_array[j] = self.sub_tables[j][0][int_array[j]]
+            output.write(f"\t\tSubstitution: {list(map(hex, int_array))}\n")
+
+            # step 3. permutation: circular left shift
+            int_64bit = self._intArrayTo64BitInt(int_array)
+            # output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
             int_64bit = ((int_64bit << 1) & 0xffffffffffffffff) | (int_64bit >> 63)
-            output.write(f"\tPermutation round {i+1}: {hex(int_64bit)}\n")
-        int_array = self._64BitIntToIntArray(int_64bit)
-        output.write(f"\tConvert back to an int array: {list(map(hex, int_array))}\n")
+            # output.write(f"\tPermutation: {hex(int_64bit)}\n")
+            int_array = self._64BitIntToIntArray(int_64bit)
+            output.write(f"\t\tPermutation: {list(map(hex, int_array))}\n")
 
         # int array -> ciphertext string
         ciphertext = "".join(list(map(chr, int_array)))
@@ -68,30 +70,32 @@ class CipherProgram():
 
         # ciphertext string -> int array
         int_array = list(map(ord, ciphertext))
-        output.write(f"\tConvert to an int array: {list(map(hex, int_array))}\n")
+        output.write(f"\tConvert input to an int array: {list(map(hex, int_array))}\n")
         
-        # step 1. permutation: 16 rounds of circular right shift
-        int_64bit = self._intArrayTo64BitInt(int_array)
-        output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
+        # a total of 16 decryption rounds
         for i in range(16):
+            # step 1. permutation: 16 rounds of circular right shift
+            output.write(f"\tEncryption Round No. {i+1}/16\n")
+            int_64bit = self._intArrayTo64BitInt(int_array)
+            # output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
             int_64bit = (int_64bit >> 1) | ((int_64bit & 0x1) << 63)
-            output.write(f"\tPermutation round {i+1}: {hex(int_64bit)}\n")
-        int_array = self._64BitIntToIntArray(int_64bit)
-        output.write(f"\tConvert back to an int array: {list(map(hex, int_array))}\n")
+            # output.write(f"\tPermutation round {i+1}: {hex(int_64bit)}\n")
+            int_array = self._64BitIntToIntArray(int_64bit)
+            output.write(f"\t\tPermutation: {list(map(hex, int_array))}\n")
 
-        # step 2. character-by-character substitution
-        for i in range(8):
-            int_array[i] = self.sub_tables[i][1][int_array[i]]
-        output.write(f"\tSubstitution: {list(map(hex, int_array))}\n")
-        
-        # step 3. xor with password
-        for i in range(8):
-            int_array[i] = int_array[i] ^ ord(password[i])
-        output.write(f"\tXOR: {list(map(hex, int_array))}\n")
+            # step 2. character-by-character substitution
+            for j in range(8):
+                int_array[j] = self.sub_tables[j][1][int_array[j]]
+            output.write(f"\t\tSubstitution: {list(map(hex, int_array))}\n")
+            
+            # step 3. xor with password
+            for j in range(8):
+                int_array[j] = int_array[j] ^ ord(password[j])
+            output.write(f"\t\tXOR: {list(map(hex, int_array))}\n")
         
         # int array -> plaintext string
         plaintext = "".join(list(map(chr, int_array)))
-        output.write(f"Plaintext output: {plaintext}\n\n")
+        output.write(f"Plaintext output: {plaintext}\n")
         return plaintext
 
     # test whether decryption indeed reverses the encryption
@@ -110,9 +114,9 @@ def main():
     password = "cs6490hw"
     # produce an encrypted output pattern
     with open("4b_output.txt", "w", encoding="utf-8") as f:
-        f.write("Unit Test 1\n\n")
+        f.write("Unit Test 1\n")
         program.test(plaintext1, password, f)
-        f.write("Unit Test 2 (Changing only one bit in the input pattern)\n\n")
+        f.write("Unit Test 2 (Changing only one bit in the input pattern)\n")
         program.test(plaintext2, password, f)        
 
 if __name__ == "__main__":
