@@ -52,11 +52,9 @@ class CipherProgram():
                 int_array[j] = self.sub_tables[j][0][int_array[j]]
             output.write(f"\t\tSubstitution: {list(map(hex, int_array))}\n")
 
-            # step 3. permutation: circular left shift
+            # step 3. permutation (circular left shift)
             int_64bit = self._intArrayTo64BitInt(int_array)
-            # output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
             int_64bit = ((int_64bit << 1) & 0xffffffffffffffff) | (int_64bit >> 63)
-            # output.write(f"\tPermutation: {hex(int_64bit)}\n")
             int_array = self._64BitIntToIntArray(int_64bit)
             output.write(f"\t\tPermutation: {list(map(hex, int_array))}\n")
 
@@ -74,12 +72,10 @@ class CipherProgram():
         
         # a total of 16 decryption rounds
         for i in range(16):
-            # step 1. permutation: 16 rounds of circular right shift
+            # step 1. permutation (circular right shift)
             output.write(f"\tEncryption Round No. {i+1}/16\n")
             int_64bit = self._intArrayTo64BitInt(int_array)
-            # output.write(f"\tConvert to a 64-bit integer: {hex(int_64bit)}\n")
             int_64bit = (int_64bit >> 1) | ((int_64bit & 0x1) << 63)
-            # output.write(f"\tPermutation round {i+1}: {hex(int_64bit)}\n")
             int_array = self._64BitIntToIntArray(int_64bit)
             output.write(f"\t\tPermutation: {list(map(hex, int_array))}\n")
 
