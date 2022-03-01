@@ -1,7 +1,18 @@
+import socket
 from Crypto.Cipher import DES3
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
 from base64 import b64encode, b64decode
+
+def sendall_wrapper(socket, data, src, dst):
+    socket.sendall(data)
+    print(f"{src}->{dst}: {bytes(data)}")
+
+def decrement_by_one(bytes):
+    length = len(bytes)
+    integer = int.from_bytes(bytes, 'big')
+    integer -= 1
+    return integer.to_bytes(length, 'big')
 
 class EcbCipher:
 
