@@ -5,10 +5,14 @@ from Crypto.Random import get_random_bytes
 from params import *
 from utils import *
 
-K_ALICE = b'\x98GP(P\r\x16\xde\xb1\x91\xd5\xaeH\x89\xc1\xa6'
-IV_ALICE = b'v\xa0\xd1\x98C\xf8\xd6\xc1'
+# TODO: Work on Trudy's program
 
+K_ALICE = b'\x94q\x9819\xc0\xbb#@ \xc2\xd4\xe2\x8d:\xeb\xa9\xc3\x0b\x99V\x8b\r\xf8'
+IV_ALICE = b'v\xa0\xd1\x98C\xf8\xd6\xc1'
 IV_AB = b'\xcd\xcd\xc3\xf8\xe7\xf5\xa2\xc2'
+
+MSG3 = b''
+MSG4 = b''
 
 def main():
     # start a connection to Bob
@@ -104,7 +108,7 @@ def main():
         data_to_bob = encrypt_by_mode(CIPHER_MODE, cipher_ab, decrement_by_one(n3))
         sendall_wrapper(s_bob, data_to_bob, "Alice", "Bob")
         print(f"Alice completes {PROTOCOL_STR}...")
-        print(f"\nLast message from Alice to Bob in Hexadecimal: {data_to_bob.hex()}")
+        print(f"\nLast message from Alice to Bob in Hex: {data_to_bob.hex()}")
 
 # argument: -v, verbose
 # argument: -m, mode
