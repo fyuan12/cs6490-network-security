@@ -109,7 +109,10 @@ class ClientThread(threading.Thread):
 
 def main():
     if PRINT_TO_FILE:
-        sys.stdout = open("ouput_bob" + FILENAME_SUFFIX + ".txt", 'w')
+        if not DEBUG_MODE:
+            sys.stdout = open("output/ouput_bob" + FILENAME_SUFFIX + ".txt", 'w')
+        else:
+            sys.stdout = open("debug/debug_bob" + FILENAME_SUFFIX + ".txt", 'w')
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(('', BOB_PORT))
         print(f"{threading.currentThread().name}\tBob waits for a connection...")

@@ -1,0 +1,9 @@
+MainThread	Bob waits for a connection...
+Thread-1	Bob starts ExpandedNeedham-Chroeder authentictation (CBC)...
+Thread-1	Alice->Bob (Msg 1): b'I want to talk to you'
+Thread-1	Bob->Alice (Msg 2): b',:\xcbj6\xb1\x15R\x06jP\x8f\x06q\xb0+'
+Thread-1	Alice->Bob (Msg 5): b'(\xb9\xaf\x9cdD\x04\x9c\x81\x16Z*\x8fq\x90\xa3\xb5\xc8\x9f\x9b+B\x8d\xaa\xd1\x06\x8b\xe2\x16\x84\xe0\xfa\x96\xbf\xa7\xd9\xf3Z\x9fQ\x02\x01\xd7\xe9\xfd\x87g\xc3\xf8o}6\xb9\x98\x06\x8d'
+Thread-1	Bob->Alice (Msg 6): b'\xc8\x01\xe8hm.pA\xdf\xbdc\x85npe\xd7LJ\xebV\x8b\xd5\xfc\x00'
+Thread-1	Alice->Bob (Msg 7): b'\xbe\xecdM03u\x8b\xe3\xb8\x8bq\xcd!\xb4\xc7'
+Thread-1	Bob completes ExpandedNeedham-Chroeder authentictation (CBC)...
+Thread-1	Last message from Bob to Alice in Hexadecimal: c801e8686d2e7041dfbd63856e7065d74c4aeb568bd5fc00

@@ -85,7 +85,10 @@ class ClientThread(threading.Thread):
 
 def main():
     if PRINT_TO_FILE:
-        sys.stdout = open("ouput_kdc" + FILENAME_SUFFIX + ".txt", 'w')
+        if not DEBUG_MODE:
+            sys.stdout = open("output/ouput_kdc" + FILENAME_SUFFIX + ".txt", 'w')
+        else:
+            sys.stdout = open("debug/debug_kdc" + FILENAME_SUFFIX + ".txt", 'w')
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(('', KDC_PORT))
         print(f"{threading.currentThread().name}\tKDC waits for a connection...")

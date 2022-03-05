@@ -1,0 +1,17 @@
+MainThread	Bob waits for a connection...
+Thread-1	Bob starts ExpandedNeedham-Chroeder authentictation (CBC)...
+Thread-1	Alice->Bob (Msg 1): b'I want to talk to you'
+Thread-1	[DEBUG] Bob generates Nb: b'a<zb\xf3K\xb4\xa8'
+Thread-1	Bob->Alice (Msg 2): b"q\xb0\x17\x19\xc4'|\x03\xb0n\xfa\x8e\x0f\xb50\xc6"
+Thread-1	Alice->Bob (Msg 5): b'\x18\x16|\xb1Q%MC\xbd}\x1c_\x94\xda\x1b\x94#\x7fg\xb6\xb0n|\xfb\x8ba>\xb4\xc1\xcaH\xc5X\xae\x19q\xca@iDU\x9e*e\xd9\xf1"\xb56h\x98\xc6Sfqb'
+Thread-1	[DEBUG] Bob derypts the ticket: b'O={L\xbeUk\xa1\xe1\x94\xb0\xac\x1e\xab\rQ1\x07\x07\x07\x07\x07\x07\x07a<zb\xf3K\xb4\xa8'
+Thread-1	[DEBUG] Bob parses shared key with Alice: b'O={L\xbeUk\xa1\xe1\x94\xb0\xac\x1e\xab\rQ'
+Thread-1	[DEBUG] Bob parses client id: b'1'
+Thread-1	[DEBUG] Bob parses Nb from Alice: b'a<zb\xf3K\xb4\xa8'
+Thread-1	[DEBUG] Bob decrypts N2: b'\xb8\xfa\x1e\xc6v\xee\xd9t'
+Thread-1	[DEBUG] Bob generates N3: b'\xf8\xb6F>\x9e\xf3\x1fb'
+Thread-1	Bob->Alice (Msg 6): b'\xd2\xafHg\x9a;\xbd\x95vW\xca\xca\xd4~Q\xe3\x13\x83\x92D\xcdc\xdaA'
+Thread-1	Alice->Bob (Msg 7): b'y\xd1\x08\xe1\xdc\xe2B\xc2\x9c\x8f\x03\xe0\x94\x89r\xa1'
+Thread-1	[DEBUG] Bob decrypts (N3-1): b'\xf8\xb6F>\x9e\xf3\x1fa'
+Thread-1	Bob completes ExpandedNeedham-Chroeder authentictation (CBC)...
+Thread-1	Last message from Bob to Alice in Hexadecimal: d2af48679a3bbd957657cacad47e51e313839244cd63da41

@@ -1,0 +1,10 @@
+MainThread	KDC waits for a connection...
+Thread-1	KDC starts Needham-Chroeder authentictation (ECB)...
+Thread-1	Alice->KDC (Msg 1): b'{\x14\xb9\x85\xfc.}D1\x07\x07\x07\x07\x07\x07\x072\x07\x07\x07\x07\x07\x07\x07'
+Thread-1	[DEBUG] KDC parses N1: b'{\x14\xb9\x85\xfc.}D'
+Thread-1	[DEBUG] KDC parses client ID: b'1'
+Thread-1	[DEBUG] KDC parses server ID: b'2'
+Thread-1	[DEBUG] KDC generates k_ab: b'\xa3\xc54g;\xc4Z\xaba\xbc\x9b;V!\xb1H'
+Thread-1	[DEBUG] KDC encrypts ticket to Bob: b'\x13\xacIk`pxp\xce\x87V\xdc\xe9\x15\x9e\x90\x15\xa4\xc4\xd5,\xc6\xea\xc1'
+Thread-1	KDC->Alice (Msg 2): b'\x02\xee\x1f\xe8\xba\xa5\x86!8\x03s{+\xc6p\xdf\x81\x86\\\xf9a\xf9\x87\x14\x80W\xb9\xbf\xc7\x07\xba7\xb8\xd4\x1bd\xbc\xe6\x93\xdf\x1aO\xc1\xc1\x85\xc2\xf3\x89\xaf\xcejm\xa7\n\x81>'
+Thread-1	KDC completes Needham-Chroeder authentictation (ECB)...

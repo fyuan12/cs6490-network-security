@@ -1,17 +1,19 @@
 from Crypto.Cipher import DES3
 
-# Non-expanded or Expanded Needham-Chroeder
-# EXPANDED = 0
-EXPANDED = 1
+# Original or Expanded Needham-Chroeder Scheme
+EXPANDED = 0
+# EXPANDED = 1
 
 # Cipher mode
-# CIPHER_MODE = DES3.MODE_ECB
-CIPHER_MODE = DES3.MODE_CBC
+CIPHER_MODE = DES3.MODE_ECB
+# CIPHER_MODE = DES3.MODE_CBC
 
 # Print out debug messages
+# DEBUG_MODE = 0
 DEBUG_MODE = 1
 
 # Print to file
+# PRINT_TO_FILE = 0
 PRINT_TO_FILE = 1
 
 # Constants

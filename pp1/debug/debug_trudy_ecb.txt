@@ -1,0 +1,14 @@
+MainThread	Trudy sees Alice->Bob (Msg 3): b'\x13\xacIk`pxp\xce\x87V\xdc\xe9\x15\x9e\x90\x15\xa4\xc4\xd5,\xc6\xea\xc1\x97\xc0\x996IbV\xfb'
+MainThread	Trudy sees Bob->Alice (Msg 4): b'\x97\x10\xbf\xacc\xd6\xfb\xc4\xb1\xfe\xf1\xf8r\xa1\xc2\xda'
+MainThread	Trudy starts a reflection attack on Needham-Chroeder authentictation (ECB)...
+MainThread	Trudy opens connection no.1 to Bob...
+MainThread	Trudy->Bob (Msg 3): b'\x13\xacIk`pxp\xce\x87V\xdc\xe9\x15\x9e\x90\x15\xa4\xc4\xd5,\xc6\xea\xc1\x97\xc0\x996IbV\xfb'
+MainThread	Bob->Trudy (Msg 4): b'\x97\x10\xbf\xacc\xd6\xfb\xc4\xe76\xd9k\xafu\xbf\x0c'
+MainThread	[DEBUG] Trudy parses the ticket: b'\x13\xacIk`pxp\xce\x87V\xdc\xe9\x15\x9e\x90\x15\xa4\xc4\xd5,\xc6\xea\xc1'
+MainThread	[DEBUG] Trudy parses encrypted nonce from connection no.1: b'\xe76\xd9k\xafu\xbf\x0c'
+MainThread	Trudy opens connection no.2 to Bob...
+MainThread	Trudy->Bob (Msg 3): b'\x13\xacIk`pxp\xce\x87V\xdc\xe9\x15\x9e\x90\x15\xa4\xc4\xd5,\xc6\xea\xc1\xe76\xd9k\xafu\xbf\x0c'
+MainThread	Bob->Trudy (Msg 4): b'\x11\x93\x18g5\x06\xef\xe2Po^``\x15\xcf\x1b'
+MainThread	[DEBUG] Trudy parses encrypted (Nonce-1) from connection no.2: b'\x11\x93\x18g5\x06\xef\xe2'
+MainThread	Trudy->Bob (Msg 5): b'\x11\x93\x18g5\x06\xef\xe2'
+MainThread	Last message from Alice to Bob in Hexadecimal: 119318673506efe2

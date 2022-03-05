@@ -4,7 +4,10 @@ from utils import *
 
 def main():
     if PRINT_TO_FILE:
-        sys.stdout = open("ouput_trudy" + FILENAME_SUFFIX + ".txt", 'w')
+        if not DEBUG_MODE:
+            sys.stdout = open("output/ouput_trudy" + FILENAME_SUFFIX + ".txt", 'w')
+        else:
+            sys.stdout = open("debug/debug_trudy" + FILENAME_SUFFIX + ".txt", 'w')
     
     thread_name = threading.currentThread().name
     # retrieve the message exchanges for Trudy

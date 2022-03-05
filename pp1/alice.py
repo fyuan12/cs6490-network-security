@@ -13,7 +13,10 @@ IV_AB = b'\xcd\xcd\xc3\xf8\xe7\xf5\xa2\xc2'
 
 def main():
     if PRINT_TO_FILE:
-        sys.stdout = open("ouput_alice" + FILENAME_SUFFIX + ".txt", 'w')
+        if not DEBUG_MODE:
+            sys.stdout = open("output/ouput_alice" + FILENAME_SUFFIX + ".txt", 'w')
+        else:
+            sys.stdout = open("debug/debug_alice" + FILENAME_SUFFIX + ".txt", 'w')
     thread_name = threading.currentThread().name
 
     # start a connection to Bob
