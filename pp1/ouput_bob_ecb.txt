@@ -1,0 +1,34 @@
+MainThread	Bob waits for a connection...
+Thread-1	Bob starts Needham-Chroeder authentictation (ECB)...
+Thread-1	Alice->Bob (Msg 3): b'x\xbd\x8f\xc1\xdf\x17Q\xee\xcb\\\xae@3?\xf4\x83\x15\xa4\xc4\xd5,\xc6\xea\xc1\xee*mQ\xe2\xbe\xe1u'
+Thread-1	[DEBUG] Bob derypts the ticket: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa61\x07\x07\x07\x07\x07\x07\x07'
+Thread-1	[DEBUG] Bob parses shared key with Alice: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa6'
+Thread-1	[DEBUG] Bob parses client id: b'1'
+Thread-1	[DEBUG] Bob decrypts N2: b'\xd0!\x8a!BdYI'
+Thread-1	[DEBUG] Bob generates N3: b"`Q]'\x93\x88{\xc0"
+Thread-1	Bob->Alice (Msg 4): b'\xc4\xbftH\xd5\xb1\x012\xce\xd2I\x1aq\x9cY\\'
+Thread-1	Alice->Bob (Msg 5): b'\x97\x85\xa2\xa7\xbfHxo'
+Thread-1	[DEBUG] Bob decrypts (N3-1): b"`Q]'\x93\x88{\xbf"
+Thread-1	Bob completes Needham-Chroeder authentictation (ECB)...
+Thread-1	Last message from Bob to Alice in Hexadecimal: c4bf7448d5b10132ced2491a719c595c
+Thread-2	Bob starts Needham-Chroeder authentictation (ECB)...
+Thread-2	Alice->Bob (Msg 3): b'x\xbd\x8f\xc1\xdf\x17Q\xee\xcb\\\xae@3?\xf4\x83\x15\xa4\xc4\xd5,\xc6\xea\xc1\xee*mQ\xe2\xbe\xe1u'
+Thread-2	[DEBUG] Bob derypts the ticket: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa61\x07\x07\x07\x07\x07\x07\x07'
+Thread-2	[DEBUG] Bob parses shared key with Alice: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa6'
+Thread-2	[DEBUG] Bob parses client id: b'1'
+Thread-2	[DEBUG] Bob decrypts N2: b'\xd0!\x8a!BdYI'
+Thread-2	[DEBUG] Bob generates N3: b'\x9b\xd0\xee\x91\x07H\xe0\xf0'
+Thread-2	Bob->Alice (Msg 4): b'\xc4\xbftH\xd5\xb1\x012<\xc8\r\x01}{\xc1\x94'
+Thread-3	Bob starts Needham-Chroeder authentictation (ECB)...
+Thread-3	Alice->Bob (Msg 3): b'x\xbd\x8f\xc1\xdf\x17Q\xee\xcb\\\xae@3?\xf4\x83\x15\xa4\xc4\xd5,\xc6\xea\xc1<\xc8\r\x01}{\xc1\x94'
+Thread-3	[DEBUG] Bob derypts the ticket: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa61\x07\x07\x07\x07\x07\x07\x07'
+Thread-3	[DEBUG] Bob parses shared key with Alice: b'RX}\x80\xa8(<e\xd5Wkt\xa9D\x9f\xa6'
+Thread-3	[DEBUG] Bob parses client id: b'1'
+Thread-3	[DEBUG] Bob decrypts N2: b'\x9b\xd0\xee\x91\x07H\xe0\xf0'
+Thread-3	[DEBUG] Bob generates N3: b'\xd4\xc0M\xc7\xc6Zx\xe6'
+Thread-3	Bob->Alice (Msg 4): b'\x17\xe2#\xd1\xd8p?\x1d\xca\xa0\xa4\x07\xb3\xdd\x1a\x14'
+Thread-3	[ERROR] Fail to receive a message from Alice. Diconnecting...
+Thread-2	Alice->Bob (Msg 5): b'\x17\xe2#\xd1\xd8p?\x1d'
+Thread-2	[DEBUG] Bob decrypts (N3-1): b'\x9b\xd0\xee\x91\x07H\xe0\xef'
+Thread-2	Bob completes Needham-Chroeder authentictation (ECB)...
+Thread-2	Last message from Bob to Alice in Hexadecimal: c4bf7448d5b101323cc80d017d7bc194

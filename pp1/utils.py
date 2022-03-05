@@ -1,17 +1,28 @@
-import socket
+import threading
 from Crypto.Cipher import DES3
 from Crypto.Util.Padding import pad, unpad
-from Crypto.Random import get_random_bytes
+from params import RECV_BUF_SIZE, DEBUG_MODE
 
-def sendall_wrapper(socket, data, src, dst):
+# socket helper functions
+def sendall_wrapper(socket, data, src, dst, msg_no):
     socket.sendall(data)
-    print(f"{src}->{dst}: {bytes(data)}")
+    print(f"{threading.currentThread().name}\t{src}->{dst} (Msg {msg_no}): {bytes(data)}")
 
-def decrement_by_one(bytes):
-    length = len(bytes)
-    integer = int.from_bytes(bytes, 'big')
-    integer -= 1
-    return integer.to_bytes(length, 'big')
+def recv_wrapper(socket, src, dst, msg_no):
+    data = socket.recv(RECV_BUF_SIZE)
+    if not data:
+        print(f"{threading.currentThread().name}\t[ERROR] Fail to receive a message from {src}. Diconnecting...")
+    else:
+        print(f"{threading.currentThread().name}\t{src}->{dst} (Msg {msg_no}): {bytes(data)}")
+    return data
+
+# encryption helper functions
+def get_new_cipher(mode, key, iv):
+    if mode == DES3.MODE_CBC:
+        cipher = DES3.new(key, mode, iv=iv)
+    else:
+        cipher = DES3.new(key, mode)
+    return cipher
 
 def encrypt_by_mode(mode, cipher, data):
     if mode == DES3.MODE_CBC:
@@ -25,48 +36,14 @@ def decrypt_by_mode(mode, cipher, data):
     else:
         return cipher.decrypt(data)
 
-def get_new_cipher(mode, key, iv):
-    if mode == DES3.MODE_CBC:
-        cipher = DES3.new(key, mode, iv=iv)
-    else:
-        cipher = DES3.new(key, mode)
-    return cipher
+# other helper functions
+def print_debug_message(message):
+    if DEBUG_MODE:
+        print(f"{threading.currentThread().name}\t[DEBUG] {message}")
 
-
-# class EcbCipher:
-
-#     def __init__(self, key):
-#         self.cipher = DES3.new(key, DES3.MODE_ECB)
-    
-#     def encrypt(self, plaintext):
-#         return self.cipher.encrypt(pad(plaintext, DES3.block_size))
-
-#     def decrypt(self, ciphertext):
-#         return unpad(self.cipher.decrypt(ciphertext), DES3.block_size)
-
-# class CbcCipher:
-
-#     def __init__(self, key, iv=None):
-#         if iv is None:
-#             self.cipher = DES3.new(key, DES3.MODE_CBC)
-#         else:
-#             self.cipher = DES3.new(key, DES3.MODE_CBC, iv=iv)
-
-#     def encrypt(self, plaintext):
-#         return self.cipher.encrypt(pad(plaintext, DES3.block_size))
-
-#     def decrypt(self, ciphertext):
-#         return unpad(self.cipher.decrypt(ciphertext), DES3.block_size)
-
-# def main():
-#     data = b'secret'
-#     key = get_random_bytes(16)
-#     cipher = CbcCipher(key)
-#     iv = cipher.cipher.iv
-#     ciphertext = cipher.encrypt(data)
-#     cipher2 = CbcCipher(key, iv=iv)
-#     plaintext = cipher2.decrypt(ciphertext)
-#     print(plaintext)
-
-# if __name__ == '__main__':
-#     main()
+# decrement the byte array by 1
+def decrement_by_one(bytes):
+    length = len(bytes)
+    integer = int.from_bytes(bytes, 'big')
+    integer -= 1
+    return integer.to_bytes(length, 'big')

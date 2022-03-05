@@ -1,0 +1,32 @@
+MainThread	Bob waits for a connection...
+Thread-1	Bob starts Needham-Chroeder authentictation (CBC)...
+Thread-1	Alice->Bob (Msg 3): b"pg\x8fj`\xbc\x06\xcd\r\x0c\x0e'\xdb\xf1\xd6\x8e\x15<\x95y\xb9t\xb6m\x1f\x9b\xde1\x87\xb1[\xd9g]\xcbz,dRi\xa6\xcf\xeb\xa0\xa0g\xf1L"
+Thread-1	[DEBUG] Bob derypts the ticket: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x871\x07\x07\x07\x07\x07\x07\x07'
+Thread-1	[DEBUG] Bob parses shared key with Alice: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x87'
+Thread-1	[DEBUG] Bob parses client id: b'1'
+Thread-1	[DEBUG] Bob decrypts N2: b';\x05d\xf6\xc3\xa5h\x1b'
+Thread-1	[DEBUG] Bob generates N3: b'\x19V\xef\x1f\x8b\xb9&\x89'
+Thread-1	Bob->Alice (Msg 4): b"\xde\xc4\x87\x9b\xa1-vI\x1c`8\x17U4H\x1b'#\xc8Y\xcd7\x03\x96"
+Thread-1	Alice->Bob (Msg 5): b'\xd2\xdalU&\xcf\x02\x92i\\\x1d\xda\xc0\x87d\x80'
+Thread-1	[DEBUG] Bob decrypts (N3-1): b'\x19V\xef\x1f\x8b\xb9&\x88'
+Thread-1	Bob completes Needham-Chroeder authentictation (CBC)...
+Thread-1	Last message from Bob to Alice in Hexadecimal: dec4879ba12d76491c6038175534481b2723c859cd370396
+Thread-2	Bob starts Needham-Chroeder authentictation (CBC)...
+Thread-2	Alice->Bob (Msg 3): b"pg\x8fj`\xbc\x06\xcd\r\x0c\x0e'\xdb\xf1\xd6\x8e\x15<\x95y\xb9t\xb6m\x1f\x9b\xde1\x87\xb1[\xd9g]\xcbz,dRi\xa6\xcf\xeb\xa0\xa0g\xf1L"
+Thread-2	[DEBUG] Bob derypts the ticket: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x871\x07\x07\x07\x07\x07\x07\x07'
+Thread-2	[DEBUG] Bob parses shared key with Alice: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x87'
+Thread-2	[DEBUG] Bob parses client id: b'1'
+Thread-2	[DEBUG] Bob decrypts N2: b';\x05d\xf6\xc3\xa5h\x1b'
+Thread-2	[DEBUG] Bob generates N3: b'\xf4\x7f`\x9e\xda\xa5\xfb\x80'
+Thread-2	Bob->Alice (Msg 4): b'\xde\xc4\x87\x9b\xa1-vI\xf8\xfd&\x12\xf4\x10\xb1\xfazo\xfd\xb4K\xe6xD'
+Thread-3	Bob starts Needham-Chroeder authentictation (CBC)...
+Thread-3	Alice->Bob (Msg 3): b"pg\x8fj`\xbc\x06\xcd\r\x0c\x0e'\xdb\xf1\xd6\x8e\x15<\x95y\xb9t\xb6m\x1f\x9b\xde1\x87\xb1[\xd9\xf8\xfd&\x12\xf4\x10\xb1\xfazo\xfd\xb4K\xe6xD"
+Thread-3	[DEBUG] Bob derypts the ticket: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x871\x07\x07\x07\x07\x07\x07\x07'
+Thread-3	[DEBUG] Bob parses shared key with Alice: b'$\x12r\xf2\xbd\x05\xc9\x8d\xb2\x08\xb7\xc0\xeer\x17\x87'
+Thread-3	[DEBUG] Bob parses client id: b'1'
+Thread-3	[DEBUG] Bob decrypts N2: b'\xe7v$\xfd\x9c}/\x0b'
+Thread-3	[DEBUG] Bob generates N3: b'\xb0\x01[7\xa7\xd5!\xf6'
+Thread-3	Bob->Alice (Msg 4): b' \xa7\x19\xe6v\xaf\xa4\xfb\xcc\xf8UI\x9f\x16+\xf6b\xd1)G\xef\x9b\xe2~'
+Thread-3	[ERROR] Fail to receive a message from Alice. Diconnecting...
+Thread-2	Alice->Bob (Msg 5): b' \xa7\x19\xe6v\xaf\xa4\xfb'
+Thread-2	[ERROR] Incorrect message format. Disconneting...
